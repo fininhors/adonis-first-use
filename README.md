@@ -30,6 +30,11 @@ PG_PASSWORD=<SENHA>
 PG_DB_NAME=<NOME-DO-BANCO>
 ```
 
+* Rode as migrations
+```bash
+node ace migration:run
+```
+
 * E finalizando rode o comando
 ```bash
 node ace serve --watch
