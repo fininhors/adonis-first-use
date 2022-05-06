@@ -1,8 +1,8 @@
 import Route from '@ioc:Adonis/Core/Route'
-import InstituicaosController from 'App/Controllers/Http/InstituicaosController'
+import InstitutionsController from 'App/Controllers/Http/InstitutionsController'
 
-Route.get('/institutions', 'InstituicaosController.index')
-Route.post('/institutions', 'InstituicaosController.store')
-Route.get('/institutions/:id', 'InstituicaosController.show')
-Route.put('/institutions/:id', 'InstituicaosController.update')
-Route.delete('/institutions/:id', 'InstituicaosController.destroy')
+Route.get('/institutions', 'InstitutionsController.index')
+Route.post('/institutions', 'InstitutionsController.store')
+Route.get('/institutions/:id', 'InstitutionsController.show')
+Route.put('/institutions/:id', 'InstitutionsController.update')
+Route.delete('/institutions/:id', 'InstitutionsController.destroy')

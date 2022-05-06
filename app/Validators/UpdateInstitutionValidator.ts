@@ -4,23 +4,24 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 export default class UpdateInstitutionValidator {
   constructor(protected ctx: HttpContextContract) {}
 
+  public refs = schema.refs({
+    institutionId: this.ctx.params.id,
+  })
+
   public schema = schema.create({
     nome: schema.string({ trim: true }, [rules.minLength(5), rules.maxLength(500)]),
-    cnpj: schema.string({ trim: true }, [rules.minLength(18), rules.maxLength(18)]),
+    cnpj: schema.string({ trim: true }, [
+      rules.minLength(18),
+      rules.maxLength(18),
+      rules.unique({
+        table: 'instituicao',
+        column: 'cnpj',
+        whereNot: { id: this.refs.institutionId },
+      }),
+    ]),
     email: schema.string({ trim: true }, [rules.email()]),
     is_active: schema.boolean.optional(),
   })
 
-  /**
-   * Custom messages for validation failures. You can make use of dot notation `(.)`
-   * for targeting nested fields and array expressions `(*)` for targeting all
-   * children of an array. For example:
-   *
-   * {
-   *   'profile.username.required': 'Username is required',
-   *   'scores.*.number': 'Define scores as valid numbers'
-   * }
-   *
-   */
   public messages = {}
 }

@@ -103,3 +103,25 @@ CREATE: app\Models\Instituicao.ts
 CREATE: database\migrations\1650379903911_instituicaos.ts
 CREATE: app\Controllers\Http\InstituicaosController.ts
 ```
+
+### Criando arquivo para tratar exceções
+
+Vamos criar um arquivo para tratar as exceções de Bad Request
+```bash
+node ace make:exception BadRequest
+```
+
+## Testes
+
+Criando o primeiro teste; um teste de funcionalidade
+```bash
+node ace make:test functional institutions/list
+```
+
+Após rodar o comando será gerado um arquivo no diretório `app/exceptions`
+```bash
+CREATE: app\Exceptions\BadRequestException.ts
+```
+
+Após rodar o comando acima será cria o diretório `institutions`
+contendo o arquivo de teste `list.specs.ts` dentro do diretório `tests/functional`

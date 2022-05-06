@@ -15,7 +15,7 @@ cd adonis-first-use
 npm install
 ```
 
-* Copie o arquivo `.env.example`para `.env`
+* Copie o arquivo `.env.example` para `.env`
 ```bash
 cp .env.example .env
 ```

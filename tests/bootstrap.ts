@@ -4,7 +4,7 @@
  * Feel free to let us know via PR, if you find something broken in this contract
  * file.
  */
-
+import { expect } from '@japa/expect'
 import type { Config } from '@japa/runner'
 import TestUtils from '@ioc:Adonis/Core/TestUtils'
 import { assert, runFailedTests, specReporter, apiClient } from '@japa/preset-adonis'
@@ -20,7 +20,7 @@ import { assert, runFailedTests, specReporter, apiClient } from '@japa/preset-ad
 | Feel free to remove existing plugins or add more.
 |
 */
-export const plugins: Config['plugins'] = [assert(), runFailedTests(), apiClient()]
+export const plugins: Config['plugins'] = [assert(), runFailedTests(), apiClient(), expect()]
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,11 @@ export const reporters: Config['reporters'] = [specReporter()]
 |
 */
 export const runnerHooks: Required<Pick<Config, 'setup' | 'teardown'>> = {
-  setup: [() => TestUtils.ace().loadCommands()],
+  setup: [
+    () => TestUtils.ace().loadCommands(),
+    () => TestUtils.db().migrate(),
+    // () => TestUtils.db().seed(),
+  ],
   teardown: [],
 }
 
